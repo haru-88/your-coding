@@ -1,0 +1,86 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+blog
+===============================================*/
+.blog {
+  background: c.$color-bg-sub;
+  padding-top: 53px;
+  padding-bottom: 91px;
+
+  &-inner {
+    max-width: 1267px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  &-card__list {
+    margin-top: 57px;
+    display: flex;
+    flex-direction: column;
+
+    @include con.mq('tab') {
+      flex-direction: row;
+    }
+  }
+  &-card {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    @include con.mq('sp') {
+      & + & {
+        margin-top: 30px;
+      }
+    }
+    @include con.mq('tab') {
+      width: calc(33.333% - 30px * 2 / 3);
+
+      &:not(:nth-child(3n + 1)) {
+        margin-left: 30px;
+      } 
+    }
+
+    &__thumb {
+      position: relative;
+      padding-top: calc((260 / 389) * 100%);
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__body {
+      background: c.$color-bg-base;
+      font-weight: bold;
+      min-height: 127px;
+      padding: 12px 28px 14px 18px;
+      display: flex;
+      flex-direction: column; 
+      flex-grow: 1;
+    }
+    &__title {
+      font-size: 1.8rem;
+      line-height: (26 /18);
+    }
+    &__date {
+      font-size: 1.6rem;
+      text-align: right;
+      margin-top: auto;
+      padding-right: 9px;
+    }
+
+    &__link {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+}

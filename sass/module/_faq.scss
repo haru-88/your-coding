@@ -1,0 +1,47 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+faq
+===============================================*/
+.faq {
+  padding-top: 55px;
+  padding-bottom: 85px;
+
+  &__list {
+    border-collapse: collapse;
+    max-width: 902px;
+    width: 100%;
+    margin: 30px auto 0;
+  }
+
+  &-item {
+    &:not(:first-child) .faq-item__answer {
+      display: none;
+    }
+
+    &__question,&__answer {
+      border: 1px solid c.$color-border-base;
+      display: block;
+      font-size: 1.4rem;
+      line-height: (26 / 14);
+      font-weight: bold;
+      text-align: left;
+    }
+    &__question {
+      padding: 16px 20px;
+      
+      @include con.mq('sp-down') {
+        text-align: center;
+      }
+    }
+    &__answer {
+      padding: 20px 20px 24px;
+      background: c.$color-bg-faq;
+      
+      @include con.mq('pc') {
+        padding: 15px 70px 25px 35px;
+      }
+    }
+  }
+}

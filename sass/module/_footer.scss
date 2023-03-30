@@ -1,0 +1,43 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+footer
+===============================================*/
+.footer {
+  height: 244px;
+  background: c.$color-bg-footer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 47px 0 45px;
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+
+    @include con.mq('sp-down') {
+      flex-direction: row;
+    }
+  }
+  &__privacypolicy {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: (28 / 16);
+
+    @include con.mq('sp-down') {
+      margin-left: 31px;
+    }
+  }
+  
+  &__copyright {
+    font-size: 1.4rem;
+    margin-top: 54px;
+  }
+}

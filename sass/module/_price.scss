@@ -1,0 +1,77 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+price
+===============================================*/
+.price {
+  background: c.$color-bg-sub;
+  padding-top: 53px;
+  padding-bottom: 69px;
+  
+  &-table {
+    font-size: 1.6rem;
+    line-height: (24 / 16);
+    max-width: 926px;
+    width: 100%;
+    margin: 68px auto 0;
+    background-color: c.$color-bg-base;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    border-collapse: collapse;
+    vertical-align: middle;
+
+    @include con.mq('sp') {
+      margin-top: 40px;
+    }
+    &__row {
+      border-bottom: 1px solid c.$color-border-base;
+    }
+    &__th {
+      font-weight: bold;
+      width: 290px;
+      padding: 40px 0px 35px 19px;
+      border-right: 1px solid c.$color-border-base;
+      white-space: nowrap;
+
+      @include con.mq('sp') {
+        border-right: none;
+        border-bottom: 1px solid c.$color-border-base;
+        width: auto;
+        padding: 22px;
+      }
+    }
+    &__row:nth-child(4) {
+      @include con.mq('tab') {
+        .price-table__th {
+          padding-bottom: 50px;
+        }
+      }
+    }
+
+    &__td {
+      font-weight: bold;
+      padding: 40px 0px 35px 32px;
+
+      @include con.mq('sp') {
+        padding-left: 0;
+      }
+    }
+  }
+
+  @include con.mq('sp') {
+    .price-table__row,
+    .price-table__th,
+    .price-table__td {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  &__note {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: (24 / 16);
+    text-align: center;
+    margin-top: 34px;
+  }
+}

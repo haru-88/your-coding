@@ -1,0 +1,89 @@
+
+@use "./color" as c;
+@use "./config" as con;
+@use "../mixin/mixin" as m;
+/* ==================================
+common
+===================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Noto Sans JP', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  background: c.$color-bg-base;
+  color: c.$color-font-base;
+}
+
+a {
+  color: c.$color-font-base;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.inner {
+  max-width: 1022px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include con.mq('pc') {
+    padding: 0;
+  }
+}
+
+.btn {
+  @include m.btn-bg;
+  display: block;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1.4rem;
+  line-height: (20 /14);
+  color: c.$color-font-sub;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+  max-width: 100%;
+  width: 155px;
+  padding: 0.6em;
+  cursor: pointer;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.util-title { 
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &__main {
+    font-size: 2.6rem;
+    line-height: (46 / 32);
+
+    @include con.mq('tab') {
+      font-size: 3.2rem;
+    }
+  }
+  &__sub {
+    font-size: 1.6rem;
+    line-height: (24 / 16);
+    color: c.$color-font-subtitle;
+    margin-top: 10px;
+  }
+}

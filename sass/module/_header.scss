@@ -1,0 +1,182 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+header
+===============================================*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 94px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  background: c.$color-bg-base;
+
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+  }
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: (35 / 24);
+    vertical-align: middle;
+    white-space: nowrap;
+
+    @include con.mq('tab') {
+      font-size: 2.4rem;
+    }
+
+    img {
+      width: 47px;
+      height: 47px;
+      margin-right: 16px;
+      vertical-align: middle;
+    }
+  }
+  &__link {
+    display: none;
+
+    @include con.mq('tab') {
+      display: block;
+    }
+  }
+  //オーバーレイ
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 97;
+    background: c.$color-bg-sub;
+    opacity: .9;
+    width: 100%;
+
+    //オーバーレイ開く
+    ._open & {
+      display: block;
+    }
+  }
+}
+
+/* -----ハンバーガーアイコン -----*/
+.hamburger {
+  display: flex;
+  align-items: center;
+  height: 94px;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  position: absolute;
+  right: 20px;
+  z-index: 99;
+  
+  @include con.mq('tab') {
+    display: none;  
+  }
+
+  &__line {
+    background: c.$color-font-base;
+    position: relative;
+    width: 30px;
+    height: 4px;
+    border-radius: 30px;
+
+    &::before,&::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 4px;
+      border-radius: 30px;
+      background: c.$color-font-base;
+      transition: transform 0.3s;
+    }
+    &::before {
+      top: -9px;
+    }
+    &::after {
+      bottom: -9px;   
+    }
+  }
+}
+/*-----ハンバーガーアイコン 開く -----*/
+.header {
+  &._open {
+    .hamburger__line {
+      background: transparent;
+    }
+    .hamburger__line::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+    .hamburger__line::after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+/* ----- ナビ -----*/
+.header-nav {
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include con.mq('sp') {
+    background: c.$color-bg-base;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -200px;
+    z-index: 98;
+    width: 200px;
+    transition: right .3s linear;
+
+    ._open & {
+      visibility: visible;
+      right: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item {
+    @include con.mq('sp') {
+      ._open & {
+        margin-top: 56px;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  // width 768以上 
+  @include con.mq('tab') {
+    visibility: visible;
+    height: 100%;
+
+    &__list {
+      flex-direction: row;
+    }
+    &__item {
+      margin-right: 47px;
+    }
+  }
+}

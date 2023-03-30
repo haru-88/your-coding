@@ -1,0 +1,106 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+mv
+===============================================*/
+.mv-wrap {
+  overflow: hidden;
+}
+.mv {
+  max-width: 1451px;
+  margin: 94px auto 0;
+  padding: 100px 0 111px;
+  position: relative;
+
+  &::after{
+    content: "";
+    background: url(../img/楕円形\ 1.svg) no-repeat;
+    display: inline-block;
+    width: 708px;
+    height: 711px;
+    position: absolute;
+    top: -18.5%;
+    right: -6%;
+
+    @include con.mq('sp') {
+      top: -2%;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+
+  @include con.mq('tab') {
+    padding: 132px 0 110px;
+  }
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+
+    @include con.mq('tab') {
+      flex-direction: row;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    z-index: 1;
+    
+    @include con.mq('tab') {
+      align-items: flex-start;
+      width: 48.5%;
+      margin-left: 20px;
+    }
+    &__title {
+      font-size: 2.8rem;
+      line-height: 1.7;
+      
+      @include con.mq('tab') {
+        font-size: 3.2rem;
+        margin-top: 23px;
+      }
+    }
+    &__lead {
+      font-size: 1.6rem;
+      line-height: 1.7;
+      margin-top: 21px;
+    }
+    &__link {
+      margin-top: 35px;
+      background: transparent;
+      text-align: center;
+    }
+  }
+
+  &__img {
+    z-index: 1;
+    text-align: center;
+
+    @include con.mq('tab') {
+      width: 51.5%;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    width: 708px;
+    height: 711px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+
+    @include con.mq('tab') {
+      transform: translate(-16%, -18.5%);
+    }
+
+    @include con.mq('pc-up') {
+      transform: translate(4.4%, -18.5%);
+    }
+  }
+}
